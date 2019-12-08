@@ -171,6 +171,10 @@ input, select, textarea {
 	}
 
 	p {
+		margin: 0 0 2em 0;
+	}
+
+	p2 {
 		text-indent: 30px;
 		margin: 0 0 2em 0;
 	}
