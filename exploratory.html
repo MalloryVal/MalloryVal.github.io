@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Data</title>
+		<title>Exploratory Analysis</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -30,7 +30,7 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">Data</h1>
+							<h1 class="major">Exploratory Data Analysis</h1>
 							<p> When it came to calculating descriptive statistics for our key attributes, we noticed several important features of our data that later informed our choices of analyses. For some attributes, the distributions presented a particularly high level of skewness. Namely, ‘retweet_count’, ‘favorite_count’, ‘followers_count’ from Twitter, and ‘artist_followers’ from Spotify all present medians which are significantly lower than their means. This indicates that these attributes are significantly skewed to the right. In context, this makes sense since we expect that retweets, favorites, and followers will all contain high outliers due to the nature of fame on social media. Since these attributes are raw counts, we expect that they will exhibit more skewness when compared to the normalized attributes like Spotify’s ‘artist_popularity’.
 With regard to spread, we noticed that the largest values observed for standard deviation coincide with the attributes that are severely skewed-right. Specifically, ‘retweet_count’, ‘favorite_count’, ‘followers_count’, and ‘artist_followers’ present the highest degree of spread among the variables we have analyzed. Again, this is likely due to the presence of high outliers in these attributes. 
 The attribute ‘album_release’, which denotes the date a specific album was first released, gives us an indication of the time period during which most of the tracks that we will analyze were released. With a mode of September 27, 2019 and a median of September 6, 2019, the center of this distribution falls in September of this year. Given that we collected our data based on the most popular tracks in mid-October, it makes sense that the most common release date of these tracks occurred about a month prior.
