@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hypothesis Testing</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Home</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Hypothesis Testing</h1>
+							<p> Hypothesis 1:
+H0: The number of tweets and favorites all the tweets about a song has, the song’s release date on Spotify, and the popularity of that song on Spotify are not correlated
+Ha:  The number of tweets and favorites all the tweets about a song has, the song’s release date on Spotify, and the popularity of that song on Spotify are correlated
+
+In order to test this hypothesis, we first had to go through all of an artist’s tweets and find all of the ones about each of their songs. In order to find the tweets about a song, we counted how many of the words in the song title the tweet contained. If the song title was less than 3 words, we required that all 3 words were present. We chose this because of songs with stop words such as “The Owl” - the identifying word is “owl”. However, if the song had greater than 3 words, we allowed there to be only half of the words present in the tweet - we made this choice due to the abbreviations that people often use on Twitter. We also chose to ignore parts of the song title in parentheses, for cases such as “(with YoungBoy Never Broke Again)”. Of course this method is not perfect, and we look forward to improving it in the next milestone when we learn about text mining. Once we had this information, we were able to calculate the number of tweets about each song, along with the total number of favorites and retweets all of those tweets received. Next, we created a scatterplot of total number of favorites vs the album popularity to get a glimpse of the relationship between a tweet’s outreach and a song’s popularity. The graph shows that there does not seem to be a very clear relationship between the total number of favorites and album popularity, especially when the number of favorites is very low. 
+</p>
+<p> We then created a new categorical column called “days_since_release” which contains the days since 10/04/2019, the date when we pulled the data. We did this because we realized that Spotify calculates “album popularity” based on how recently people listened to the music, which would bias our results to more recently released music. Since our goal is to see if how much artists promote their music on Twitter is correlated with their album popularity, we have to take the date of release into account. To test our hypothesis, we ran a multiple linear regression. 
+The Shapiro Wilk test for normality resulted in a p-value of 0, meaning that we have evidence the data is not normal. Therefore, we first normalized the data before running the linear regression. The regression model resulted in Album Popularity = 𝜷0 + 𝜷1Number of Favorites + 𝜷2Number of Retweets + 𝜷3Days Since Release + ε, ε ~ N(0,𝜎2) iid. The resulting regression equation is Popularity = 39.61 + 19.574(Number of Favorites) + -58.211(Number of Retweets) + -8.573(Days Since Release) with an Adjusted R2 value of 0.06. The adjusted R2 tells us the percentage of the variance in the dependent variable that the independent variables collectively explain. Therefore, this regression equation tells us that our independent variables about Twitter do not explain a song’s popularity on Spotify well.
+
+We wanted to see if we would get similar results using classification models that classified album popularity based on the number of tweets, total favorites, total retweets, and days since the release of the song on Spotify. The first time we predicted the song’s popularity to the exact ranking. This resulted in models with extremely low accuracy scores. The Random Forest Model resulted in the highest accuracy score on the test data, but was only 10.17%. The confusion matrix shown below showed mostly zeros along the diagonal line, meaning that very rarely did the model correctly classify the song’s popularity. 
+[4 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ ...
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]]
+The Decision Tree Classifier was the next highest at 8.47% with Naive Bayes and K-Nearest neighbors following at 6.77%. Since the accuracy scores were so low, we decided to try again using album popularity as a binary variable, where 1 is “popular” (ranking > 50) and 0 is “unpopular” (ranking <= 50). This resulted in much higher accuracy scores, and the models only differed in accuracy scores by less than 2%. Both the Decision Tree Classifier and Naive Bayes resulted in an accuracy score of 69.49% and K-Nearest Neighbors and Random Forest resulted in 67.79% accuracy. This can be interpreted as 69.49% of the time, the Decision Tree Classifier or Naive Bayes model can accurately predict whether or not a song is “popular” on Spotify given the number of tweets, amount of favorites and retweets those tweets received, and the days since the release of the song. The classification report for K-Nearest neighbors shows that the precision for predicting unpopularity was 62% and the precision for predicting popularity was 73%. For the Decision Tree Classifier, the precision for predicting unpopularity was 68% and the precision for predicting popularity was 88%. This means that this Decision Tree Classifier model can predict popularity more precisely than K-Nearest Neighbors. 
+The confusion matrix shown below shows that the Decision Tree model predicted true positives 24 times and only false positives twice.
+[[24  2]
+ [17 16]]
+We created an ROC curve of the Decision Tree Classifier, which shows that our model performs better than random guessing. The AUC tells us that the probability our model ranks a random positive example more highly than a random negative example is 71%.
+
+</p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
