@@ -42,9 +42,179 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major">Clustering Analysis</h1>
-							<p>We used cluster analysis and association mining to look at the differences between songs featured by Spotify and the top songs of featured artists. Clustering analysis on the data revealed that the most effective clustering algorithm for the dataset was the K-Means algorithm with k=5, as the silhouette value was the highest. This was supported by the PCA projection of the values. We then analysed the centroids of each attribute in a cluster and decided that each cluster was unique. Next, we performed a k-means clustering analysis of the featured songs and a k-means clustering analysis of the top songs for each artist that was featured. We wanted to know the characteristics of the most popular types of song compared to the characteristics of types of songs featured. We found a silhouette score of 0.18 for featured songs and 0.22 for top songs showing that the clusters for both top songs and featured songs had overlapping characteristics. Since the values were between 0 and 1, with the highest value being 0.7, we used the value 0.6 as the lower bound for assuming a high attribute. In addition, we only counted values of liveness over 0.8 as high, since the spotify documentation indicates that a value above 0.8 provides strong indication that the track is live. 
+							<p style="text-indent: 40px">We used cluster analysis and association mining to look at the differences between songs featured by Spotify and the top songs of featured artists. Clustering analysis on the data revealed that the most effective clustering algorithm for the dataset was the K-Means algorithm with k=5, as the silhouette value was the highest. This was supported by the PCA projection of the values. We then analysed the centroids of each attribute in a cluster and decided that each cluster was unique. Next, we performed a k-means clustering analysis of the featured songs and a k-means clustering analysis of the top songs for each artist that was featured. We wanted to know the characteristics of the most popular types of song compared to the characteristics of types of songs featured. We found a silhouette score of 0.18 for featured songs and 0.22 for top songs showing that the clusters for both top songs and featured songs had overlapping characteristics. Since the values were between 0 and 1, with the highest value being 0.7, we used the value 0.6 as the lower bound for assuming a high attribute. In addition, we only counted values of liveness over 0.8 as high, since the spotify documentation indicates that a value above 0.8 provides strong indication that the track is live. 
 						<p>
-							<p>When comparing the clusters of top songs and feadured songs, we found that high danceability, energy and valence were common characteristics of both groups. We also found that high acousticness was a common characteristic of both groups of songs. However, Spotify tended to feature songs that were both high in acousticness and higher in danceability than top songs. Similarly, Spotify typically features songs high in just instrumentalness, but top songs that are high in instrumentalness are also high in energy.  Analysis also revealed that songs with high energy and tempo are more common in top songs than the only high energy songs featured by Spotify. In addition, Spotify often featured songs that were only high in energy whereas top songs were often only high in danceability. Our analysis indicates that spotify does feature songs that listeners are likely to like. However, since Spotify features new songs, the slight difference between the typical songs featured by Spotify and typical top songs for each artist indicates that musical quality may be a factor in driving popularity, undermining our hypothesis that self promotion is the key to artist success.</p>
+						<p>Performing k-means analysis on top song data:
+						<p>
+						<p>For n_clusters =5 the average silhouette_score is 0.17699177295082624
+						<p>
+							<section>
+							<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>cluster</th>
+													<th>track_acousticness</th>
+													<th>track_danceability</th>
+													<th>track_energy</th>
+													<th>track_instrumentalness</th>
+													<th>track_liveness</th>
+													<th>track_speechiness</th>
+													<th>track_valence</th>
+													<th>track_tempo</th>
+													
+													
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												
+												
+											</tbody>
+											
+										</table>
+									</div>
+							</section>
+						<p>Performing k-means analysis on featured song data:
+						<p>
+						<p>For n_clusters =5 the average silhouette_score is 0.22514588017234158
+						<p>
+							<section>
+							<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>cluster</th>
+													<th>track_acousticness</th>
+													<th>track_danceability</th>
+													<th>track_energy</th>
+													<th>track_instrumentalness</th>
+													<th>track_liveness</th>
+													<th>track_speechiness</th>
+													<th>track_valence</th>
+													<th>track_tempo</th>
+													
+													
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>0</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												
+												
+											</tbody>
+											
+										</table>
+									</div>
+							</section>
+							<p style="text-indent: 40px">When comparing the clusters of top songs and feadured songs, we found that high danceability, energy and valence were common characteristics of both groups. We also found that high acousticness was a common characteristic of both groups of songs. However, Spotify tended to feature songs that were both high in acousticness and higher in danceability than top songs. Similarly, Spotify typically features songs high in just instrumentalness, but top songs that are high in instrumentalness are also high in energy.  Analysis also revealed that songs with high energy and tempo are more common in top songs than the only high energy songs featured by Spotify. In addition, Spotify often featured songs that were only high in energy whereas top songs were often only high in danceability. Our analysis indicates that spotify does feature songs that listeners are likely to like. However, since Spotify features new songs, the slight difference between the typical songs featured by Spotify and typical top songs for each artist indicates that musical quality may be a factor in driving popularity, undermining our hypothesis that self promotion is the key to artist success.</p>
 						<p>
 						</div>
 					</section>
