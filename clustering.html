@@ -44,14 +44,14 @@
 							<h1 class="major">Clustering Analysis</h1>
 							<section>
 							<div class="row" style="display:flex">
-								<div class="column">
-									<p> Top songs </p>
-									<img src="images/TOP_PCA_KMEANS.png" alt="" style="width:100%">
-								</div>
-								<div class="column">
-									<p> Featured songs </p>
-									<img src="images/FEATURED_PCA_KMEANS.png" alt="" style="width:100%">
-								</div>
+							<div class="column">
+								<p> Top songs </p>
+								<img src="images/TOP_PCA_KMEANS.png" alt="" style="width:100%">
+							</div>
+							<div class="column">
+								<p> Featured songs </p>
+								<img src="images/FEATURED_PCA_KMEANS.png" alt="" style="width:100%">
+							</div>
 							</div>
 							</section>
 							<p style="text-indent: 40px">We used cluster analysis and association mining to look at the differences between songs featured by Spotify and the top songs of featured artists. Clustering analysis on the data revealed that the most effective clustering algorithm for the dataset was the K-Means algorithm with k=5, as the silhouette value was the highest. This was supported by the PCA projection of the values. We then analysed the centroids of each attribute in a cluster and decided that each cluster was unique. Next, we performed a k-means clustering analysis of the featured songs and a k-means clustering analysis of the top songs for each artist that was featured. We wanted to know the characteristics of the most popular types of song compared to the characteristics of types of songs featured. We found a silhouette score of 0.18 for featured songs and 0.22 for top songs showing that the clusters for both top songs and featured songs had overlapping characteristics. Since the values were between 0 and 1, with the highest value being 0.7, we used the value 0.6 as the lower bound for assuming a high attribute. In addition, we only counted values of liveness over 0.8 as high, since the spotify documentation indicates that a value above 0.8 provides strong indication that the track is live. 
